@@ -1,0 +1,21 @@
+<h1>Inbox</h1>
+
+<% if @messages.empty? %>
+<div  class="alert alert-danger"> Oh. no friend? </div>
+<% end %>
+<table class="table">
+  <thead class="bg-info">    
+    <tr>      
+      <th>Sender</th>
+      <th>Subject</th>      
+    </tr>
+  </thead>
+  <% @messages.each do |message| %>
+  <tbody>
+    <tr>      
+      <td><%= message.sender %></td>
+      <td><%= message.subject %></td>      
+    </tr>
+  </tbody>
+  <% end %>
+</table>
