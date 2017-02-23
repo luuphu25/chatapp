@@ -6,7 +6,7 @@ module ApplicationHelper
   def flash_messages(opts = {})
     flash.map do |msg_type, message|
       content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade show") do
-        content_tag(:button, 'x'.html_safe, class: 'close', data: {dismiss: 'alert'}) + message
+        content_tag(:button, '&times'.html_safe, class: 'close', data: {dismiss: 'alert'}) + message
       end
     end.join.html_safe
   end
