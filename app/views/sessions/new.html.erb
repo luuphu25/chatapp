@@ -1,0 +1,10 @@
+<h1>Sign in</h1>
+<hr>
+<%= form_tag sessions_path do %>
+<div class="form-control">
+  <%= text_field_tag :email, params[:email], placeholder: "Email", class:'form-control' %>
+  <%= password_field_tag :password, nil, placeholder: "Enter password...", class:'form-control' %>
+  <%= submit_tag "Sign in", class:'btn btn-primary' %>
+</div>
+<% end %>
+
