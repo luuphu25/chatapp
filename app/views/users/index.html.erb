@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <%= user.name %>
+    <%= user.email %>
+  <% end %>
+<% end %> 
