@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @users.save
       flash[:success] = "Welcome #{@users.name} !"
       session[:id] = @users.id
-      redirect_to user_path(id: @users.id)
+      redirect_to root_path
     else
       flash[:error] = "Error: #{@users.errors.full_messages.to_sentence}"
       render new_user_path

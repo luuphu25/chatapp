@@ -8,7 +8,19 @@ class User < ApplicationRecord
   end
 
   def received_messages
-    Message.where(recipient_id: id)
+    Message.where(recipient: self)
+  end
+
+  def sent_messages
+    Message.where(sender: self)
+  end
+
+  def lastest_received_messages(n)
+    received_messages.order(create_at :desc).limit(n)
+  end
+
+  def unread_messages
+    received_messages.unread
   end
 
 end

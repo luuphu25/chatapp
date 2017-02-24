@@ -1,0 +1,22 @@
+
+<% if @messages.empty? %>
+<div  class="alert alert-danger"> Oh. no friend? </div>
+<% end %>
+<table class="table">
+  <thead class="bg-info">    
+    <tr>      
+      <th>Sender</th>
+      <th>Subject</th>
+      <th></th>      
+    </tr>
+  </thead>
+  <% @messages.each do |message| %>
+  <tbody>
+    <tr class="<%= "p1" if !message.read_at %>">  
+      <td><%= message.sender %></td>
+      <td><%= message.subject %></td>
+      <td><%= link_to "Read", message_path(id: message.id) %></td>    
+    </tr>
+  </tbody>
+  <% end %>
+</table>

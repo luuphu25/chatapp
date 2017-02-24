@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :messages do
+    collection do
+      get :sent
+      get :received
+    end
+  end
+  
   resources :sessions, only: [:new, :create]
   resources :users
 
