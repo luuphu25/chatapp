@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
   def index
     @messages = current_user.received_messages
+    if params[:sort]
+      @messages = current_user.lastest_received_messages(10)
+    end
   end
 
   def show
-    @message = Message.where(recipient: current_user).find params[:id]
+    @message= Message.where(recipient: current_user).find params[:id]       
+    
     if @message.read_at == nil 
       @message.mark_as_read!
     end

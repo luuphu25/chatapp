@@ -1,2 +1,17 @@
 <h1>Inbox</h1>
-<%= render 'messages' %>
+<hr>
+<div class="row">
+  <%= form_tag nil, method: 'get' do %>
+  <div class="form-inline">
+    <%= select_tag :sort, options_for_select(['lastest']), class:"custom-select mb-2 mr-sm-2 mb-sm-0" %>   
+    <%= submit_tag "Sort", class:"btn btn-warning"%>
+  </div>
+  <% end %>
+  <div style="margin-left: 50%">
+    <%= link_to "New messages", messages_path, class:"btn btn-primary" %>
+    <%= link_to "Sent messages", messages_path, class:"btn btn-primary" %>
+  </div>  
+</div>
+<div class="col-lg-8 p2">
+  <%= render 'messages' %>
+</div>

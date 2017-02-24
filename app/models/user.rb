@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def lastest_received_messages(n)
-    received_messages.order(create_at :desc).limit(n)
+    received_messages.order(created_at: :desc).limit(n)
   end
 
   def unread_messages
