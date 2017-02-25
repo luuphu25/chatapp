@@ -16,7 +16,8 @@
       </li>
       <li class="nav-item">
         <% if current_user %>
-        <%= link_to "Log Out", log_out_path, method: 'delete', class:'nav-link' %>
+        <li> <%= link_to "Log Out", log_out_path, method: 'delete', class:'nav-link' %></li>
+        <li> <%= link_to "User" '<i class="world icon"></i>'.html_safe, users_path, class:'nav-link' %> </li> 
         <% else %>
         <li class="nav-item">          
           <%= link_to "Sign in",  new_session_path, class:'nav-link' %>        
@@ -24,12 +25,14 @@
         <% end %>
       </li>     
     </ul>
+    <% if current_user %>
     <form class="form-inline my-2 my-lg-0">
       <div class="nav-item">
-        <%= link_to "Friend", users_path, class:'nav-link' %> 
-      </div> 
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+      <%= link_to "Friends" '<i class="users icon"></i>'.html_safe, friendships_path, class:'nav-link' %>
+     </div> 
+     <input class="form-control mr-sm-2" type="text" placeholder="Search">
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+   </form>
+   <% end %>
+ </div>
 </nav>

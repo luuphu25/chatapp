@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   def index
+    load_user
     @messages = current_user.received_messages   
   end
 
@@ -33,6 +34,28 @@ class MessagesController < ApplicationController
     else
       @user = current_user
     end
+  end
+
+   def new
+    @messages = Message.new
+    @users = User.all
+  end
+
+  def create
+    @message = Message.new message_params
+    @message.sender = current_user
+    if @message.save
+      flash[:success] = "Message sent !"      
+      redirect_to received_messages_path
+    else
+      flash[:error] = "Error: #{@messages.errors.full_messages.to_sentence}"
+      render new_message_path
+    end
+
+  end
+
+  def message_params
+    params.require(:message).permit(:recipient_id, :body, :subject)
   end
 
 end

@@ -1,57 +1,57 @@
 <hr>
 <div class="row">
   <%= form_tag nil, method: 'get' do %>
-  <div class="form-inline">
+  <div class="form-inline" style="margin-left: 15px">
     <%= select_tag :sort, options_for_select(['lastest']), class:"custom-select mb-2 mr-sm-2 mb-sm-0" %>   
     <%= submit_tag "Sort", class:"btn btn-warning"%>
   </div>
   <% end %>
   <div style="margin-left: 50%">
-    <%= link_to "New messages", messages_path, class:"ui green button" %>   
+    <%= link_to "New messages", new_message_path, class:"ui green button" %>   
   </div>  
 </div>
 <hr>
-<div class="row">
-  <div class="five wide column p3">    
-    <div class="large vertical ui buttons">
-    <%= link_to "Inbox", received_messages_path, class:"ui blue button" %>
-    <%= link_to "Sent", sent_messages_path, class:"ui blue button " %>
-    </div>
-  </div>
-    <div class="eight wide column" style="padding-left: 20px">
-      <% if @messages.empty? %>
-      <div  class="alert alert-danger"> Oh. no friend? </div>
-      <% end %>
-      <table class="ui red table">
-        <thead> 
-          <tr>      
-            <th>From</th>
-            <th>To</th>
-            <th>Subject</th>
-            <th>Read_at</th>
-            <th></th>      
-          </tr>
-        </thead>
-        <% @messages.each do |message| %>
-        <tbody>
-          <tr class="<%= "p1" if !message.read_at %>">  
-            <td><%= message.sender %></td>
-            <td><%= message.receiver %></td>
-            <td><%= message.subject %></td>
-            <td><% if message.read_at %> 
-              <%= message.read_at %>
-              <% else %>
-              <p> "not read"</p>
-              <% end %>
-            </td>
-            <td><% if message.sender_id != current_user.id %>
-            <%= link_to "Read", message_path(id: message.id) %>
-              <% end %>
-            </td>    
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-    </div>
-  </div>
+
+
+<div class="ui large buttons">
+  <%= link_to "Inbox", received_messages_path, class:"ui button" %>
+  <div class="or"></div>
+  <%= link_to "Sent", sent_messages_path, class:"ui positive button " %>
+</div>
+
+<div class="eight wide column" style="padding-left: 20px; padding-top: 10%;">
+  <% if @messages.empty? %>
+  <div  class="alert alert-danger"> Oh. no friend? </div>
+  <% end %>
+  <table class="ui red table">
+    <thead class="full-width"> 
+      <tr>      
+        <th>From</th>
+        <th>To</th>
+        <th>Subject</th>
+        <th>Read_at</th>
+        <th></th>      
+      </tr>
+    </thead>
+    <% @messages.each do |message| %>
+    <tbody>
+      <tr class="<%= "p1" if !message.read_at %>">  
+        <td><%= message.sender %></td>
+        <td><%= message.receiver %></td>
+        <td><%= message.subject %></td>
+        <td><% if message.read_at %> 
+          <%= message.read_at %>
+          <% else %>
+          <p> "not read"</p>
+          <% end %>
+        </td>
+        <td><% if message.sender_id != current_user.id %>
+          <%= link_to "Read", message_path(id: message.id) %>
+          <% end %>
+        </td>    
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
 

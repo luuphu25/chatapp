@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    @friendships = Friendship.all
   end
 
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     if @users.save
       flash[:success] = "Welcome #{@users.name} !"
       session[:id] = @users.id
-      redirect_to messages_path
+      redirect_to received_messages_path
     else
       flash[:error] = "Error: #{@users.errors.full_messages.to_sentence}"
       render new_user_path
