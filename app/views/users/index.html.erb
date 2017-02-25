@@ -1,6 +1,13 @@
 <% @users.each do |user| %>
   <% if user.id != current_user.id %>
-    <%= user.name %>
-    <%= user.email %>
+    <div class="card col-lg-6"> 
+      <div class="card-block">
+        <h4 class="card-title"><%= user.name %></h4>
+        <p class="card-text"><%= user.email %></p>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+      </div>
+    </div>
   <% end %>
 <% end %> 
+
+<%= link_to "Friend list", friendships_path(id: current_user.id) %>

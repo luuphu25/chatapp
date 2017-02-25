@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       get :received
     end
   end
-  
+
+  resources :friendships
   resources :sessions, only: [:new, :create]
   resources :users
 
