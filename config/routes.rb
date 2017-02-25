@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :sessions, only: [:new, :create]
   resources :users
-
+  get 'auth/:provider/callback' => 'sessions#callback'
   get 'sign_in' => 'sessions#new'
   delete 'log_out' => 'sessions#destroy'  
   root 'home#index'
