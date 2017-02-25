@@ -1,9 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @messages = current_user.received_messages
-    if params[:sort]
-      @messages = current_user.lastest_received_messages(10)
-    end
+    @messages = current_user.received_messages   
   end
 
   def show
@@ -16,12 +13,18 @@ class MessagesController < ApplicationController
 
   def sent
     load_user
-    @messages = @user.sent_messages
+    @messages = @user.sent_messages 
+     if params[:sort]
+      @messages = current_user.lastest_received_messages(10)
+    end   
   end
 
   def received
     load_user
-    @messages = @user.received_messages
+    @messages = @user.received_messages   
+     if params[:sort]
+      @messages = current_user.lastest_received_messages(10)
+    end
   end
   
   def load_user

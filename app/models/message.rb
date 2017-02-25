@@ -15,6 +15,10 @@ class Message < ApplicationRecord
     save!
   end
 
+  def receiver    
+    User.find_by_id(recipient_id)    
+  end
+
   def read?
     read_at
   end

@@ -1,4 +1,6 @@
 @import "bootstrap";
+$font-family:'Helvetica Neue', Arial, Helvetica, sans-serif !default;
+@import "semantic-ui";
 
 .p1
 {
@@ -6,7 +8,14 @@
 }
 .p2
 {
-  margin-left: 10%;
+  margin-left: 20%;
   margin-top: 10%;
-  border-style: solid;
+  
 }
+
+.p3
+{
+  margin-left: 10px;
+  
+}
+
