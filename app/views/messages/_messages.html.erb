@@ -19,10 +19,13 @@
   <%= link_to "Sent", sent_messages_path, class:"ui positive button " %>
 </div>
 
-<div class="eight wide column" style="padding-left: 20px; padding-top: 10%;">
+<div class="eight wide column" style="padding-left: 20px; padding-top: 10px;">
+  <div class="pagination" style="margin-left:75%">
+  <%= paginate @messages %>
+  </div>
   <% if @messages.empty? %>
   <div  class="alert alert-danger"> Oh. no friend? </div>
-  <% end %>
+  <% end %>  
   <table class="ui red table">
     <thead class="full-width"> 
       <tr>      
@@ -47,11 +50,10 @@
         </td>
         <td><% if message.sender_id != current_user.id %>
           <%= link_to "Read", message_path(id: message.id) %>
-          <% end %>
+        <% end %> 
         </td>    
       </tr>
     </tbody>
     <% end %>
   </table>
 </div>
-

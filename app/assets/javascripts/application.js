@@ -13,6 +13,7 @@
 //= require jquery
 //= require tether
 //= require semantic-ui
+//= require jquery.infinite-pages
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks

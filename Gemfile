@@ -36,6 +36,9 @@ gem 'rails-assets-tether'
 gem 'semantic-ui-sass'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 3.0.0'
+gem 'filepicker-rails'
+gem 'kaminari'
+gem 'jquery-infinite-pages'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

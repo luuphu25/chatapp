@@ -16,16 +16,19 @@ class MessagesController < ApplicationController
     load_user
     @messages = @user.sent_messages 
      if params[:sort]
-      @messages = current_user.lastest_received_messages(10)
-    end   
+      @messages = current_user.lastest_received_messages(5)
+    end
+    @messages = @messages.order("id").page(params[:page]).per(5)      
   end
 
   def received
     load_user
-    @messages = @user.received_messages   
-     if params[:sort]
-      @messages = current_user.lastest_received_messages(10)
+    @messages = @user.received_messages
+    if params[:sort]
+      @messages = current_user.lastest_received_messages(5)
     end
+      @messages = @messages.order("id").page(params[:page]).per(5)   
+     
   end
   
   def load_user

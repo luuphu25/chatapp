@@ -1,17 +1,22 @@
-<h2>Friends</h2>
-<p><%= @user.friendships.size %></p>
-<ul>
-  <% for friendship in @user.friendships %>
-    <li>
-      <%=h friendship.friend.name %>
-      (<%= link_to "remove", friendship, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
+<h2>Friends(<%= @user.friendships.size %>)</p></h2>
+<hr>
+<br>
+<% for friendship in @user.friendships %>
+<div class="ui three column grid">
+  <div class="card">
+      <div class="card-title"><%=h friendship.friend.name %></div>
+      <div class="card-text">
+      <%= link_to "remove", friendship, :method => :delete , class:"ui primary button" %>
+      </div>
+  </div>
+</div>
+<% end %>
+
+
 
 <h2>Friended by Users</h2>
 <ul>
   <% for user in @user.inverse_friends %>
-    <li><%=h user.name %></li>
+  <li><%=h user.name %></li>
   <% end %>
 </ul>

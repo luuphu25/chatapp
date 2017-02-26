@@ -1,3 +1,4 @@
+
 <div class="ui three column centered grid">
   <% @users.each do |user| %>
   <% if user.id != current_user.id %>
@@ -16,6 +17,6 @@
     </div>
   <% end %>
 <% end %> 
-</div>
-
-<%= link_to "Friend list", friendships_path(id: current_user.id) %>
+</div> 
+<br>
+<%= paginate @users %>
