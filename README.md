@@ -4,7 +4,7 @@
 
 Submitted by: **Luu Duc Phu**
 
-Time spent: **20** hours
+Time spent: **25** hours
 
 URL: **https://immense-temple-57216.herokuapp.com**
 
@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](relative-path-to-your-gif-file-on-github-or-absolute-path-to-file-on-imgur-or-youtube)
+![Video Walkthrough](http://i.imgur.com/GUC8g0r.gifv)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
