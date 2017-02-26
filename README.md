@@ -4,9 +4,9 @@
 
 Submitted by: **Luu Duc Phu**
 
-Time spent: **X** hours
+Time spent: **20** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://immense-temple-57216.herokuapp.com**
 
 ## User Stories
 
