@@ -12,7 +12,7 @@ class User < ApplicationRecord
   def friends
     active_friends | received_friends
   end
-  
+
   def pending
     pending_friends | requested_friendships
   end

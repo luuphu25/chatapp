@@ -21,7 +21,7 @@
 
 <div class="eight wide column" style="padding-left: 20px; padding-top: 10px;">
   <div class="pagination" style="margin-left:75%">
-  <%= paginate @messages %>
+    <%= paginate @messages %>
   </div>
   <% if @messages.empty? %>
   <div  class="alert alert-danger"> Oh. no friend? </div>
@@ -49,8 +49,12 @@
           <% end %>
         </td>
         <td><% if message.sender_id != current_user.id %>
-          <%= link_to "Read", message_path(id: message.id) %>
-        <% end %> 
+              <% if message.read_at %>
+              <%= link_to "Read", error_messages_path %>
+              <% else %>          
+              <%= link_to "Read", message_path(id: message.id) %>
+              <% end %>
+            <% end %>
         </td>    
       </tr>
     </tbody>

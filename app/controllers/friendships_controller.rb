@@ -1,8 +1,9 @@
 class FriendshipsController < ApplicationController
 
   def index
-    @users = User.order("id").page(params[:page]).per(4)
-    @friendship = Friendship.all
+    @friendships = Friendship.where(friend_id: current_user.id)   
+    @users = User.all
+
   end
 
   def create

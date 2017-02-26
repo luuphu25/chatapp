@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get :sent
       get :received
+      get :error
     end
   end
 
