@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
       @messages = current_user.lastest_received_messages(5)
     end
     @messages = @messages.order("id").page(params[:page]).per(5)   
-    
+
   end
   
   def load_user
@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
     @message.sender = current_user
     if @message.save
       flash[:success] = "Message sent !"      
-      redirect_to received_messages_path
+      redirect_to root_url
     else
       flash[:error] = "Error: #{@messages.errors.full_messages.to_sentence}"
       render new_message_path
