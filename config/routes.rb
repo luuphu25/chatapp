@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
+
+  get 'friendships/update'
+
+  get 'friendships/destroy'
+
   resources :messages do
     collection do
       get :sent

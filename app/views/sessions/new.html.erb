@@ -9,7 +9,9 @@
     <%= password_field_tag :password, nil, placeholder: "Enter password...", class:'form-control' %>
   </div>
   <%= submit_tag "Sign in", class:'btn btn-primary' %>
+  <hr>
+  <%= link_to "Sign in with facebook", "/auth/facebook", class:"ui facebook button" %>
 </div>
 <% end %>
-<%= link_to "Sign in with facebook", "/auth/facebook", class:"ui facebook button" %>
-</button>
+<br>  
+

@@ -1,10 +1,9 @@
-<h2>Friends(<%= @user.friendships.size %>)</p></h2>
+<h2>Friends</h2>
 <hr>
 <br>
 <div class="ui three column centered grid">
-  <% for friendship in @user.friendships %>
-
-  <div class="card column p4"> 
+<% current_user.active_friends.each do |request| %>
+ <div class="card column p4"> 
 
    <div class="image">
     <img src="/images/avatar2/large/kristy.png">
@@ -12,23 +11,32 @@
   <div class="card-title"><%=h friendship.friend.name %></div>
   <div class="card-text"><%= friendship.friend.email %></div>
   <div class="extra content bottom">
-    <span class="bottom floated">
+    <% if friendship.accepted %>
+     <span class="bottom floated">
      <%= link_to "remove", friendship, :method => :delete , class:"negative ui button" %>          
-   </span> 
+      </span> 
+        <% else %>
+       <span class="bottom floated">
+         <%= link_to "Pending..", class:"ui primary button" %>          
+        </span>
+    <% end %> 
  </div>
- 
+      
+ </div>
+ <% end %>
 </div>
-<% end %> 
-</div>
 
 
-
-
-<h2>Friended by Users</h2>
-<ul>
-  <% for user in @user.inverse_friends %>
-  <li><%=h user.name %></li>
+  <ul>
+    <% current_user.requested_friendships.each do |request| %>
+    <li>
+      <% @x = Friendship.where(user_id: request.id).where(friend_id: current_user.id).first%>
+      <%= request.name %>
+      <%= link_to "Accept",  friendship_path(id: @x.id), method: "put", class:"positive ui button" %>
+      <%= link_to "Decline", friendship_path(id: @x.id), method: :delete,class:"negative ui button" %>
+    </li>
   <% end %>
 </ul>
+
 
 

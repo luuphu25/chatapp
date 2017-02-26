@@ -1,11 +1,22 @@
 class User < ApplicationRecord
   has_many :friendships
-  has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :received_friendships, class_name: "Friendship", foreign_key: "friend_id"
+
+  has_many :active_friends, -> { where(friendships: { accepted: true}) }, through: :friendships, source: :friend
+  has_many :received_friends, -> { where(friendships: { accepted: true}) }, through: :received_friendships, source: :user
+  has_many :pending_friends, -> { where(friendships: { accepted: false}) }, through: :friendships, source: :friend
+  has_many :requested_friendships, -> { where(friendships: { accepted: false}) }, through: :received_friendships, source: :user
   has_secure_password
 
-  validates :email , presence: true, uniqueness: true  
+  validates :email , presence: true, uniqueness: true 
+  def friends
+    active_friends | received_friends
+  end
+  
+  def pending
+    pending_friends | requested_friendships
+  end
+
 
   def to_s
     email
@@ -27,7 +38,7 @@ class User < ApplicationRecord
     received_messages.unread
   end
 
-    def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
     # Check out the Auth Hash function at https://github.com/mkdynamic/omniauth-facebook#auth-hash
     # and figure out how to get email for this user.
     # Note that Facebook sometimes does not return email,
