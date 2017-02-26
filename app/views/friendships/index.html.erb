@@ -1,16 +1,26 @@
 <h2>Friends(<%= @user.friendships.size %>)</p></h2>
 <hr>
 <br>
-<% for friendship in @user.friendships %>
-<div class="ui three column grid">
-  <div class="card">
-      <div class="card-title"><%=h friendship.friend.name %></div>
-      <div class="card-text">
-      <%= link_to "remove", friendship, :method => :delete , class:"ui primary button" %>
-      </div>
+<div class="ui three column centered grid">
+  <% for friendship in @user.friendships %>
+
+  <div class="card column p4"> 
+
+   <div class="image">
+    <img src="/images/avatar2/large/kristy.png">
   </div>
+  <div class="card-title"><%=h friendship.friend.name %></div>
+  <div class="card-text"><%= friendship.friend.email %></div>
+  <div class="extra content bottom">
+    <span class="bottom floated">
+     <%= link_to "remove", friendship, :method => :delete , class:"negative ui button" %>          
+   </span> 
+ </div>
+ 
 </div>
-<% end %>
+<% end %> 
+</div>
+
 
 
 
@@ -20,3 +30,5 @@
   <li><%=h user.name %></li>
   <% end %>
 </ul>
+
+
